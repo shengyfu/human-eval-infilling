@@ -1,0 +1,33 @@
+name: Evaluating gpt-3.5-turbo FIM api with single-line benchmark
+
+on: workflow_dispatch
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.10"
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -e .
+
+    - name: Run evaluation
+      run: |
+        cd scripts
+        ./eval.sh ${{ secrets.GPT35_TURBO_MODEL_URL }} ${{ secrets.GPT35_TURBO_API_KEY }} "fim" "single-line" "gpt-35-turbo-sl.jsonl" "gpt-35-turbo-sl-output.txt"
+        
+    - name: Upload artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: eval_results
+        path: scripts/gpt-35-turbo*
