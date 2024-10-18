@@ -18,7 +18,7 @@ setup(
     ],
     entry_points={
         "console_scripts": [
-            "evaluate_infilling_functional_correctness = human_eval_infilling.evaluate_functional_correctness",
+            "evaluate_infilling_functional_correctness = human_eval_infilling.evaluate_functional_correctness:main",
         ]
     },
 )
