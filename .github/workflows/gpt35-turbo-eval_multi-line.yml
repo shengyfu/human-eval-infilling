@@ -1,0 +1,34 @@
+name: Evaluating gpt-3.5-turbo FIM api with multi-line/random-span benchmark
+
+on: workflow_dispatch
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.10"
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -e .
+
+    - name: Run evaluation
+      run: |
+        cd scripts
+        ./eval.sh ${{ secrets.GPT35_TURBO_MODEL_URL }} ${{ secrets.GPT35_TURBO_API_KEY }} "fim" "multi-line" "gpt-35-turbo-ml.jsonl" "gpt-35-turbo-ml-output.txt"
+        ./eval.sh ${{ secrets.GPT35_TURBO_MODEL_URL }} ${{ secrets.GPT35_TURBO_API_KEY }} "fim" "random-span" "gpt-35-turbo-rs.jsonl" "gpt-35-turbo-rs-output.txt"
+        
+    - name: Upload artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: eval_results
+        path: scripts/gpt-35-turbo*
