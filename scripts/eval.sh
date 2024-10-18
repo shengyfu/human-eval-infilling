@@ -1,10 +1,10 @@
 #!/bin/sh
-model_url="" # model_url
-api_key="" # api_key
-api_type="chat" # chat or fim
-benchmark="test" # "test", "single-line", "multi-line", "random-span", "random-span-light"
-model_output_file="gpt35-test.jsonl" # model output
-eval_output_file="gpt35-test-eval.txt" # console output
+model_url=$1 # model_url
+api_key=$2 # api_key
+api_type=$3 # chat or fim
+benchmark=$4 # "test", "single-line", "multi-line", "random-span", "random-span-light"
+model_output_file=$5 # model output
+eval_output_file=$6 # console output
 
 start_time=$(date +%s)
 python3 data_gen.py --model_url=$model_url --api_key=$api_key --api_type=$api_type --benchmark=$benchmark --output_file=$model_output_file

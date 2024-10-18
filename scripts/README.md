@@ -18,17 +18,17 @@ $ pip install -e human-eval-infilling
 
 ## Usage
 
-Run the eval.sh in /scripts folder, update the following parameters in eval.sh before running evaluation:
+Run the eval.sh in /scripts folder, pass the following parameters into eval.sh:
 ```
-model_url="" # model_url
-api_key="" # api_key
-api_type="chat" # chat or fim
-benchmark="test" # "test", "single-line", "multi-line", "random-span", "random-span-light"
-model_output_file="gpt35-test.jsonl" # model output
-eval_output_file="gpt35-test-eval.txt" # console output
+model_url=$1 # model_url
+api_key=$2 # api_key
+api_type=$3 # "chat" or "fim"
+benchmark=$4 # "test", "single-line", "multi-line", "random-span", "random-span-light"
+model_output_file=$5 # model output file path
+eval_output_file=$6 # console output file path
 ```
 
 ```
 $ cd scripts
-$ ./eval.sh
+$ ./eval.sh "model_url" "api_key" "chat" "test" "gpt-4o-mini-test.jsonl" "gpt-4o-mini-test-output.txt"
 ```
