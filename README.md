@@ -4,15 +4,15 @@ This is an evaluation harness for the HumanEval infilling benchmarks described i
 
 ## Installation
 
-Make sure to use python 3.7 or later:
+Make sure to use python 3.10 or later:
 ```
-$ conda create -n codex python=3.7
+$ conda create -n codex python=3.10
 $ conda activate codex
 ```
 
 Check out and install this repository:
 ```
-$ git clone https://github.com/openai/human-eval-infilling
+$ git clone https://github.com/shengyfu/human-eval-infilling
 $ pip install -e human-eval-infilling
 ```
 
