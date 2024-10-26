@@ -12,7 +12,7 @@ $ conda activate codex
 
 Check out and install this repository:
 ```
-$ git clone https://github.com/openai/human-eval-infilling
+$ git clone https://github.com/shengyfu/human-eval-infilling
 $ pip install -e human-eval-infilling
 ```
 
